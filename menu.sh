@@ -26,7 +26,7 @@ textoSeleccionado(){
 	clear
 	echo "Contenido del archivo elegido -> "$ITEM":"
 	cat archivosdetexto/$ITEM
-	echo /n
+	echo
 }
 echo "Seleccionar un archivo de texto"
 select ITEM in $(ls archivosdetexto)
