@@ -1,23 +1,42 @@
-#!/bin/bash -ex
+#!/bin/bash
 clear
 mostrarscripts(){
-SCRIPTS=$(ls scripts)" Volver" #se agrega la opcion "Volver" a la lista de scripts para elegir otro archivo de texto
+	echo "Elegir una opción:"
+	SCRIPTS=$(ls scripts)" Volver" #se agrega la opcion "Volver" a la lista de scripts para elegir otro archivo de texto
 	select SCRIPT in $SCRIPTS
 	do
 		if [ -z $SCRIPT ] #se verifica que la variable no este vacia
 		then
-		echo "La opción elegida no existe" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
+		echo "Ingrese una opción valida" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
 		else
-		./scripts/$SCRIPT "" #se ejecuta el script seleccionado
+			if [ $SCRIPT == "Volver" ]
+			then
+				./menu.sh
+			else
+				clear
+				textoSeleccionado
+				./scripts/$SCRIPT "" #se ejecuta el script seleccionado
+				echo
+				mostrarscripts
+			fi
 		fi
 	done
 }
-echo "Seleccionar un archivo de texto para comenzar, si el archivo deseado no esta en la lista, agregarlo al directorio archivosdetexto"
+textoSeleccionado(){
+	clear
+	echo "Contenido del archivo elegido -> "$ITEM":"
+	cat archivosdetexto/$ITEM
+	echo /n
+}
+echo "Seleccionar un archivo de texto"
 select ITEM in $(ls archivosdetexto)
 do
-	clear
-	echo "el contenido del archivo "$ITEM" es:"
-	cat archivosdetexto/$ITEM
+	if [ -z $ITEM ] #se verifica que la variable no este vacia
+	then
+	echo "Ingrese una opción valida" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
+	else
+	textoSeleccionado
 	mostrarscripts
+	fi
 done
 exit 0
