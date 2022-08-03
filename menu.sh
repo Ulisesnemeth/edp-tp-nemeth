@@ -1,6 +1,10 @@
 #!/bin/bash
 clear
+RED="\e[31m"
+GREEN="\e[32m"
+ENDCOLOR="\e[0m"
 mostrarscripts(){
+	echo
 	echo "Elegir una opción:"
 	SCRIPTS=$(ls scripts)" Volver" #se agrega la opcion "Volver" a la lista de scripts para elegir otro archivo de texto
 	select SCRIPT in $SCRIPTS
@@ -15,8 +19,9 @@ mostrarscripts(){
 			else
 				clear
 				textoSeleccionado
-				./scripts/$SCRIPT "" #se ejecuta el script seleccionado
 				echo
+				echo -e "${GREEN}$SCRIPT${ENDCOLOR}"
+				./scripts/$SCRIPT archivosdetexto/$ITEM #se ejecuta el script seleccionado
 				mostrarscripts
 			fi
 		fi
