@@ -40,8 +40,13 @@ do
 	then
 	echo "Ingrese una opción valida" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
 	else
-	textoSeleccionado
-	mostrarscripts
+		if [ -z $(cat archivosdetexto/$ITEM) ]
+		then
+			echo "El archivo de texto esta vacío, seleccione un archivo de texto que tenga contenido"
+		else
+			textoSeleccionado
+			mostrarscripts
+		fi
 	fi
 done
 exit 0
