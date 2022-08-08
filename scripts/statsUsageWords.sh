@@ -4,7 +4,7 @@ for PALABRA in $(cat $1 | tr -d [:punct:])
 do
     if [[ ${#PALABRA} > 3 ]]
     then
-        PALABRAS=${PALABRAS}" "${PALABRA^}
+        PALABRAS=${PALABRAS}" "${PALABRA^} # Coloca las palabras del texto en un string de una linea separadas por un espacio luego de sacarle los caracteres de puntuacion al texto
     fi
 done
 CONTADOR=0
