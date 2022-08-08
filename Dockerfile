@@ -1,3 +1,4 @@
 FROM ubuntu
+WORKDIR /home/edp-tp-nemeth
 COPY . .
-ENTRYPOINT [""]
+ENTRYPOINT [ "./menu.sh" ]
