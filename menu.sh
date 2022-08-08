@@ -11,7 +11,7 @@ mostrarscripts(){
 	do
 		if [ -z $SCRIPT ] #se verifica que la variable no este vacia
 		then
-		echo "Ingrese una opción valida" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
+		echo -e "${RED}Ingrese una opción valida${ENDCOLOR}" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
 		else
 			if [ $SCRIPT == "Volver" ]
 			then
@@ -22,6 +22,7 @@ mostrarscripts(){
 				echo
 				echo -e "${GREEN}$SCRIPT${ENDCOLOR}"
 				./scripts/$SCRIPT archivosdetexto/$ITEM #se ejecuta el script seleccionado
+				echo  ___________________________________________
 				mostrarscripts
 			fi
 		fi
@@ -38,13 +39,14 @@ select ITEM in $(ls archivosdetexto)
 do
 	if [ -z $ITEM ] #se verifica que la variable no este vacia
 	then
-	echo "Ingrese una opción valida" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
+	echo -e "${RED}Ingrese una opción valida${ENDCOLOR}"
 	else
 		if [ -z $(cat archivosdetexto/$ITEM) ]
 		then
-			echo "El archivo de texto esta vacío, seleccione un archivo de texto que tenga contenido"
+			echo -e "${RED}El archivo de texto $ITEM esta vacío, seleccione un archivo de texto que tenga contenido${ENDCOLOR}"
 		else
 			textoSeleccionado
+			echo  ___________________________________________
 			mostrarscripts
 		fi
 	fi
