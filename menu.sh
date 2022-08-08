@@ -11,7 +11,7 @@ mostrarscripts(){
 	do
 		if [ -z $SCRIPT ] #se verifica que la variable no este vacia
 		then
-		echo -e "${RED}Ingrese una opción valida${ENDCOLOR}" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
+		echo -e "${RED}Ingrese una opción válida${ENDCOLOR}" #si la variable esta vacia, es porque se eligio una opcion que no estaba en la lista
 		else
 			if [ $SCRIPT == "Volver" ]
 			then
@@ -39,7 +39,7 @@ select ITEM in $(ls archivosdetexto)
 do
 	if [ -z $ITEM ] #se verifica que la variable no este vacia
 	then
-	echo -e "${RED}Ingrese una opción valida${ENDCOLOR}"
+	echo -e "${RED}Ingrese una opción válida${ENDCOLOR}"
 	else
 		if [ -z $(cat archivosdetexto/$ITEM) ]
 		then
