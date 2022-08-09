@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 CONTADOR=0
 ACUMULADOR=0
 for PALABRA in $(grep -o "[^ ]*[^ ]*" $1 | tr -d [:punct:]) #Se itera en una lista de las palabras del archivo elegido, quitandoles los caracteres de puntuación
@@ -21,7 +21,8 @@ do
     CONTADOR=$(($CONTADOR + 1))
     ACUMULADOR=$(($ACUMULADOR + ${#PALABRA}))
 done
+ACUMULADORCONDECIMALES=$((($ACUMULADOR * 100)/$CONTADOR))
 echo La palabra mas larga es de $PALABRAMASLARGA letras
 echo La palabra mas corta es de $PALABRAMASCORTA letras
-echo La longitud promedio de las palabras es de $(($ACUMULADOR/$CONTADOR)) letras
+echo La longitud promedio de las palabras es de $(cut -c 1-1 <<< $ACUMULADORCONDECIMALES),$(cut -c 2-3 <<< $ACUMULADORCONDECIMALES) letras
 exit 0

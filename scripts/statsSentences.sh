@@ -27,8 +27,8 @@ do
     CONTADOR=$(($CONTADOR + 1))
     ACUMULADOR=$(($ACUMULADOR + ${#ORACION}))
 done
-
+ACUMULADORCONDECIMALES=$((($ACUMULADOR * 100)/$CONTADOR))
 echo La oración mas larga tiene $ORACIONMASLARGA caracteres
 echo La oración mas corta tiene $ORACIONMASCORTA caracteres
-echo La longitud promedio de las oraciones es de $(($ACUMULADOR/$CONTADOR)) caracteres
+echo La longitud promedio de las oraciones es de $(cut -c 1-1 <<< $ACUMULADORCONDECIMALES),$(cut -c 2-3 <<< $ACUMULADORCONDECIMALES) caracteres
 exit 0
